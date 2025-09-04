@@ -14,7 +14,7 @@ load_dotenv()
 BASE_URL = "https://api.mixcloud.com/margateradio/cloudcasts/"
 EXPORT_FOLDER = "mixcloud_embeds"
 FUZZY_MATCH_THRESHOLD = 85
-CUTOFF_DATE = datetime.now(timezone.utc) - timedelta(days=150)
+CUTOFF_DATE = datetime.now(timezone.utc) - timedelta(days=120)
 
 # Create export folder if it doesn't exist
 os.makedirs(EXPORT_FOLDER, exist_ok=True)
