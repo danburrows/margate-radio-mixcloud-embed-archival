@@ -52,8 +52,12 @@ def fetch_all_shows():
 
     return shows
 
+from urllib.parse import quote
+
 def generate_embed_code(slug):
-    return f'<iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed{slug}/" frameborder="0"></iframe>'
+    encoded_slug = quote(f"/{slug}/")
+    return f'<iframe width="100%" height="60" src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed={encoded_slug}" frameborder="0" allow="encrypted-media; fullscreen; autoplay; idle-detection; speaker-selection; web-share;"></iframe>'
+
 
 def clean_title_for_grouping(title):
     # Strip date-like suffixes: " - 08.25" or " - 07.24"
