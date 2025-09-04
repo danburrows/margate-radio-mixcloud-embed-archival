@@ -94,13 +94,19 @@ def run():
     with open(GROUPED_OUTPUT_FILE, "w") as f:
         for group in grouped_shows:
             group_title = clean_title_for_grouping(group[0]['name'])
-            f.write(f"# {group_title}\n")
+            f.write(f"# {group_title}\n\n")
             for show in group:
                 slug = show["key"].strip("/")
                 embed = generate_embed_code(slug)
+                f.write(
+                    '<hr style="border: none; height: 1px; background-color: #676767; margin: 2em auto;">\n'
+                )
+                f.write(f"{show['name']}\n")
                 f.write(f"{embed}\n\n")
             f.write("\n")
-    print(f"✅ Grouped titles written to {GROUPED_OUTPUT_FILE}")
+
+
 
 if __name__ == "__main__":
     run()
+
